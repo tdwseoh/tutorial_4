@@ -1,0 +1,43 @@
+---
+title: "Models"
+author: "Thomas Seoh"
+format: html
+execute: 
+  echo: false
+---
+
+```{r}
+#| label: setup
+#| message: FALSE
+library(tidyverse)
+library(brms)
+library(tidybayes)
+library(gtsummary)
+```
+
+```{r plot}
+fit_bern |> 
+  add_epred_draws(newdata = ndata) |> 
+  select(.epred) |> 
+  ggplot(aes(x = .epred)) + 
+  geom_density(aes(y = after_stat(count / sum(count)))) + 
+  scale_x_continuous(labels = scales::percent_format()) + 
+  scale_y_continuous(labels = scales::percent_format()) + 
+  labs(title = "Posterior Distribution for p", 
+       subtitle =  "There is a 95% chance for a value between 40% and 50%", 
+       x = "Proportion, p, of Votes for Biden", 
+       y = "Probability")
+```
+
+## **Summary**
+This data was from 1,559 individual U.S. adult citizens who was surveyed about the who they are likely to vote for in the 2024 Elections, conducted in March 10-12 2024 by YouGov, which we seek to determine what proportion of all votes will be cast for Joe Biden in the 2024 Elections.
+
+$$ biden_i =  \mu + \epsilon_i $$
+
+```{r model, cache=TRUE}
+poll_data <- tibble(biden = c(rep(1, 655), 
+                              rep(0, 904)))
+
+slice_sample(poll_data, n = 10)
+fit_bern <- brm(formula = biden ~ 1,data = poll_data, family = bernoulli(), refresh = 0, silent = 2, seed = 9)
+```
