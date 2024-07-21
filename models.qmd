@@ -30,7 +30,7 @@ fit_bern |>
 ```
 
 ## **Summary**
-This data was from 1,559 individual U.S. adult citizens who was surveyed about the who they are likely to vote for in the 2024 Elections, conducted in March 10-12 2024 by YouGov, which we seek to determine what proportion of all votes will be cast for Joe Biden in the 2024 Elections. There is one specific problem, the assumption of representativeness on this data, as YouGov does not specify where the U.S. adult citizens were residing, and if most of them were from a specific area, such as Texas, then the data will be much more anti-Biden than the country as a whole.
+This data was from 1,559 individual U.S. adult citizens who was surveyed about the who they are likely to vote for in the 2024 Elections, conducted in March 10-12 2024 by YouGov, which we seek to determine what proportion of all votes will be cast for Joe Biden in the 2024 Elections. There is one specific problem, the assumption of representativeness on this data, as YouGov does not specify where the U.S. adult citizens were residing, and if most of them were from a specific area, such as Texas, then the data will be much more anti-Biden than the country as a whole. In the poll, Biden’s support was much less than 50%. The best estimate of the quantity of interest was 42%, plus or minus 2.5%, which indicates our estimate for Biden’s percentage of the vote in Election Day. The quantity of interest is given two ways of uncertainty (plus or minus 2.5%), however, the range is only correct if all assumptions are true. In conclusion, while our model estimates that Biden's support will be about 42% in the 2024 Elections, this model is not and will never be completely accurate.
 
 $$ biden_i =  \mu + \epsilon_i $$
 
